@@ -1,0 +1,217 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Level_sets/Level_set_1/Level.gd" type="Script" id=1]
+[ext_resource path="res://Collectables/Star.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Status_Changer/Hook/Hook.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI_Scenes/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Gate/Gate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Fonts/Dosis-Medium.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Project_jump/Button_normal.png" type="Texture" id=8]
+[ext_resource path="res://Collectables/Coin_set.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Project_jump/Button_pressed.png" type="Texture" id=10]
+[ext_resource path="res://Project_jump/level_button_normal.png" type="Texture" id=11]
+[ext_resource path="res://Helpers/Trampoline.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Project_jump/Slope.png" type="Texture" id=13]
+[ext_resource path="res://Collectables/Character_unlocker.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Project_jump/Cuber.png" type="Texture" id=15]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 128, 0, 128, 0, 128, 128, 0, 128 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "level_button_normal.png 0"
+0/texture = ExtResource( 11 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Cuber.png 1"
+1/texture = ExtResource( 15 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 128, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 6 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "Slope.png 2"
+2/texture = ExtResource( 13 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 128, 128 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 7 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+
+[sub_resource type="DynamicFont" id=5]
+size = 96
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 7 )
+
+[node name="Level_8" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 68.0
+color = Color( 0.0196078, 0.0745098, 0.129412, 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 8
+format = 1
+tile_data = PoolIntArray( -983014, 2, 0, -983013, 1, 0, -983012, 1, 0, -983011, 1, 0, -983010, 1, 0, -983009, 536870914, 0, -917504, 2, 0, -917503, 1, 0, -917502, 1, 0, -917501, 1, 0, -917500, 1, 0, -917499, 1, 0, -917498, 1, 0, -917497, 1, 0, -917496, 1, 0, -917495, 1, 0, -917494, 1, 0, -917493, 1, 0, -917492, 1, 0, -917491, 1, 0, -917490, 1, 0, -917489, 1, 0, -917488, 1, 0, -917487, 1, 0, -917486, -1610612734, 0, -917479, 2, 0, -917478, 1610612738, 0, -917473, 1073741826, 0, -917472, 536870914, 0, -851968, 1, 0, -851950, 1, 0, -851944, 2, 0, -851943, 1610612738, 0, -851936, 1073741826, 0, -851935, 536870914, 0, -786432, 1, 0, -786414, 1073741826, 0, -786413, 1, 0, -786412, 1, 0, -786411, 1, 0, -786410, 1, 0, -786409, 1, 0, -786408, 1610612738, 0, -786399, 1, 0, -720896, 1, 0, -720863, 1, 0, -655360, 1, 0, -655354, 1, 0, -655353, 1, 0, -655352, 1, 0, -655351, 536870914, 0, -655327, 1, 0, -589824, 1, 0, -589815, 1, 0, -589806, 2, 0, -589805, 1073741825, 0, -589804, 1073741825, 0, -589803, 1073741825, 0, -589802, 1073741825, 0, -589801, 536870914, 0, -589791, 1, 0, -524288, 1, 0, -524279, 1, 0, -524270, 1073741825, 0, -524265, 1073741826, 0, -524264, 536870914, 0, -524255, 1, 0, -458752, 1, 0, -458743, 1, 0, -458742, 1, 0, -458741, 1, 0, -458740, 1, 0, -458739, 1, 0, -458738, 1, 0, -458734, 1073741825, 0, -458728, 1073741826, 0, -458727, 536870914, 0, -458720, 2, 0, -458719, 1610612738, 0, -393216, 1073741826, 0, -393215, 1, 0, -393214, 1, 0, -393213, 1, 0, -393212, 1, 0, -393211, 1, 0, -393210, 1, 0, -393209, 1, 0, -393208, 1, 0, -393207, 1610612738, 0, -393202, 1, 0, -393198, 1073741825, 0, -393191, 1073741826, 0, -393190, 1, 0, -393189, -1610612735, 0, -393188, 1, 0, -393187, 1, 0, -393186, 1, 0, -393185, 1, 0, -393184, 1610612738, 0, -327677, 1073741826, 0, -327676, 1073741825, 0, -327675, 1073741825, 0, -327674, 1610612738, 0, -327666, 1, 0, -327662, 1073741825, 0, -262140, 1073741825, 0, -262139, 1073741825, 0, -262130, 1, 0, -262126, 1073741825, 0, -196604, 1073741825, 0, -196603, 1073741825, 0, -196594, 1, 0, -196590, 1073741825, 0, -131068, 1073741825, 0, -131067, 1073741825, 0, -131058, 1, 0, -131054, 1073741825, 0, -65533, 2, 0, -65532, 1073741825, 0, -65531, 1073741825, 0, -65530, 536870914, 0, -65522, 1, 0, -65518, 1073741825, 0, 65535, 1073741825, 0, 0, 1073741825, 0, 1, 1073741825, 0, 2, 1073741825, 0, 3, 1073741825, 0, 4, 1073741825, 0, 5, 1073741825, 0, 6, 1073741825, 0, 7, 1073741825, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 18, 1073741825, 0, 131071, 1073741825, 0, 65536, 0, 0, 65554, 1073741825, 0, 196607, 1073741825, 0, 131090, 1073741825, 0, 262143, 1073741825, 0, 196626, 1073741825, 0, 327679, 1073741825, 0, 262162, 1073741825, 0, 393215, 1073741825, 0, 327694, 2, 0, 327695, 1, 0, 327696, 1, 0, 327697, 1, 0, 327698, 1073741825, 0, 458751, 1073741825, 0, 393228, 2, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1073741825, 0, 524287, 1073741825, 0, 458761, 2, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1073741825, 0, 589823, 1073741825, 0, 524288, 1073741825, 0, 524289, 1073741825, 0, 524290, 1073741825, 0, 524291, 1073741825, 0, 524292, 1073741825, 0, 524293, 1073741825, 0, 524294, 1073741825, 0, 524295, 1073741825, 0, 524296, 1073741825, 0, 524297, 1073741825, 0, 524298, 1073741825, 0, 524299, 1073741825, 0, 524300, 1073741825, 0, 524301, 1073741825, 0, 524302, 1073741825, 0, 524303, 1073741825, 0, 524304, 1073741825, 0, 524305, 1073741825, 0, 524306, 1073741825, 0 )
+
+[node name="UI" parent="." instance=ExtResource( 5 )]
+
+[node name="Level" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -447.0
+margin_bottom = -325.0
+custom_fonts/font = SubResource( 5 )
+text = "Level_1"
+align = 1
+valign = 1
+
+[node name="Level2" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -230.0
+margin_top = -254.0
+margin_right = 230.0
+margin_bottom = -254.0
+custom_fonts/font = SubResource( 5 )
+text = "Empty Level"
+align = 1
+valign = 1
+
+[node name="Back" type="TextureButton" parent="."]
+margin_left = 60.0
+margin_top = 70.0
+margin_right = 316.0
+margin_bottom = 166.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Back"]
+margin_left = 62.0
+margin_right = 183.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 4 )
+text = "Back"
+
+[node name="Platform_sets" type="Node2D" parent="."]
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Gate" parent="Areas" instance=ExtResource( 6 )]
+position = Vector2( 952, -1029 )
+
+[node name="Star_set" type="Node2D" parent="Areas"]
+
+[node name="Star1" parent="Areas/Star_set" instance=ExtResource( 2 )]
+position = Vector2( 2095, -366 )
+
+[node name="Star2" parent="Areas/Star_set" instance=ExtResource( 2 )]
+position = Vector2( 474, -950 )
+
+[node name="Star3" parent="Areas/Star_set" instance=ExtResource( 2 )]
+position = Vector2( 2701, -1274 )
+
+[node name="Spike_set" type="Node2D" parent="Areas"]
+
+[node name="Coin_set" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( 3573, -1248 )
+
+[node name="Coin_set2" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( 346, -1232 )
+
+[node name="Coin_set3" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( 1937, 427 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 558, 945 )
+
+[node name="Trampoline" parent="." instance=ExtResource( 12 )]
+position = Vector2( 3007, -633 )
+
+[node name="Character_unlocker" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3728, -940 )
+collect_char = 2
+
+[node name="Hook" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1613, -1290 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Rope" parent="Hook" index="0"]
+position = Vector2( 0, -277.958 )
+scale = Vector2( 0.6875, 13.0651 )
+z_index = -1
+
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="body_entered" from="Areas/Gate" to="." method="_on_Gate_body_entered"]
+
+[editable path="Hook"]

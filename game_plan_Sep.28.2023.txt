@@ -1,0 +1,5 @@
+-Fixes and improvements to star animations
+
+-Integration and adaptation of Star data to other locations
+
+-Introducing skins that can be purchased with coins in the shop menu

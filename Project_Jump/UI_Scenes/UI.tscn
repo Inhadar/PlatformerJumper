@@ -1,0 +1,669 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Fonts/Dosis-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Project_jump/Button_normal.png" type="Texture" id=2]
+[ext_resource path="res://Project_jump/Button_pressed.png" type="Texture" id=3]
+[ext_resource path="res://Project_jump/star.png" type="Texture" id=4]
+[ext_resource path="res://Project_jump/Sb_pressed.png" type="Texture" id=5]
+[ext_resource path="res://Project_jump/Sb_normal.png" type="Texture" id=6]
+[ext_resource path="res://UI_Scenes/UI.gd" type="Script" id=7]
+[ext_resource path="res://Project_jump/UI/Score_board2.png" type="Texture" id=8]
+[ext_resource path="res://Project_jump/UI/Boost_count_Board.png" type="Texture" id=9]
+[ext_resource path="res://Project_jump/Players/Player2.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_size = 1
+extra_spacing_char = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="Shader" id=13]
+code = "shader_type canvas_item;
+
+uniform float blur :hint_range(0,6) = 0.5;
+void fragment() {
+	
+	vec4 color = texture(SCREEN_TEXTURE,SCREEN_UV,blur);
+	COLOR = color;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+shader_param/blur = 1.0
+
+[sub_resource type="DynamicFont" id=6]
+size = 128
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+extra_spacing_top = -13
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 88
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 309
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 96
+extra_spacing_top = -31
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=12]
+resource_local_to_scene = true
+extents = Vector2( 1080, 450 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "New Anim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("New_character/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1080, 315 ), Vector2( 1080, 315 ), Vector2( 1080, 315 ), Vector2( 1080, 315 ), Vector2( 1080, 315 ), Vector2( 1080, 315 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("New_character/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 7, 7 ), Vector2( 5, 5 ), Vector2( 4, 4 ), Vector2( 4, 4 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("New_character/Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("New_character/character_name:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 1.8, 4.6, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 973, 589 ), Vector2( 973, 589 ), Vector2( 8, 540 ), Vector2( 8, 540 ), Vector2( 973, 589 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("New_character/character_name:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5, 1.8, 4.6, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 0.1, 0.1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("New_character/character_name:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5, 1.8, 4.6, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("New_character/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("New_character/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 7.23404, 7.23404 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("New_character/character_name:custom_fonts/font:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 128 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("New_character/character_name:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("New_character/character_name:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("New_character/character_name:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 812, 566 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("New_character/Sprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1080, 315 ) ]
+}
+
+[sub_resource type="DynamicFont" id=16]
+size = 128
+font_data = ExtResource( 1 )
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_vertical_guides_": [ 25.0, 1080.0 ]
+}
+
+[node name="Score_Bar" type="Sprite" parent="."]
+self_modulate = Color( 0.717647, 0.572549, 1, 1 )
+position = Vector2( 193, 96 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 8 )
+
+[node name="stars" type="Node2D" parent="Score_Bar"]
+
+[node name="Star1" type="Sprite" parent="Score_Bar/stars"]
+modulate = Color( 0.494118, 0.396078, 0.690196, 1 )
+position = Vector2( -92.456, 42.1036 )
+texture = ExtResource( 4 )
+
+[node name="Star2" type="Sprite" parent="Score_Bar/stars"]
+modulate = Color( 0.494118, 0.396078, 0.690196, 1 )
+position = Vector2( -39.8588, 42.1036 )
+texture = ExtResource( 4 )
+
+[node name="Star3" type="Sprite" parent="Score_Bar/stars"]
+modulate = Color( 0.494118, 0.396078, 0.690196, 1 )
+position = Vector2( 9.45107, 42 )
+texture = ExtResource( 4 )
+
+[node name="Test_Label" type="Label" parent="."]
+visible = false
+margin_left = 51.0
+margin_top = -176.0
+margin_right = 696.0
+margin_bottom = -54.0
+custom_fonts/font = SubResource( 4 )
+text = "Test Label"
+
+[node name="Coin" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 24.0
+margin_top = 6.0
+margin_right = 669.0
+margin_bottom = 128.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 4 )
+text = "Coin: 00000"
+valign = 1
+
+[node name="Fps" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -101.0
+margin_top = 66.0
+margin_right = 544.0
+margin_bottom = 188.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 18 )
+text = "FPS: 00"
+align = 1
+valign = 1
+
+[node name="Boost_bar" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.572549, 1, 1, 1 )
+position = Vector2( 1056, 73 )
+scale = Vector2( 3.625, 3.625 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BC" type="Label" parent="Boost_bar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -62.0
+margin_top = -14.0
+margin_right = 556.0
+margin_bottom = 126.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 4 )
+text = "00:00"
+align = 1
+valign = 1
+
+[node name="Blur" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 14 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Game_over_menu" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -455.0
+margin_top = -735.0
+margin_right = 455.0
+margin_bottom = 735.0
+
+[node name="Sprite" type="Sprite" parent="Game_over_menu"]
+position = Vector2( 447.375, 702 )
+scale = Vector2( 3.63379, 15.5208 )
+texture = ExtResource( 2 )
+
+[node name="You_Win" type="Label" parent="Game_over_menu"]
+margin_left = 2.0
+margin_top = 221.0
+margin_right = 919.0
+margin_bottom = 384.0
+custom_fonts/font = SubResource( 6 )
+text = "You Win!"
+align = 1
+valign = 1
+
+[node name="Coins" type="Label" parent="Game_over_menu"]
+margin_left = 111.0
+margin_top = 552.0
+margin_right = 867.0
+margin_bottom = 693.0
+custom_fonts/font = SubResource( 5 )
+text = "-----------
+Coins: 000"
+valign = 1
+clip_text = true
+
+[node name="Control" type="Control" parent="Game_over_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -463.0
+margin_top = -309.0
+margin_right = 102.0
+margin_bottom = -154.0
+
+[node name="Level" type="Label" parent="Game_over_menu/Control"]
+margin_left = 121.0
+margin_top = 6.0
+margin_right = 618.0
+margin_bottom = 295.0
+custom_fonts/font = SubResource( 7 )
+text = "Level:"
+
+[node name="Level_number" type="Label" parent="Game_over_menu/Control"]
+margin_left = 331.0
+margin_top = -12.0
+margin_right = 828.0
+margin_bottom = 142.0
+custom_fonts/font = SubResource( 7 )
+text = "9"
+valign = 1
+
+[node name="Buttons" type="Control" parent="Game_over_menu"]
+margin_left = -21.0
+margin_top = -91.0
+margin_right = 19.0
+margin_bottom = -51.0
+
+[node name="Restart" type="Node2D" parent="Game_over_menu/Buttons"]
+position = Vector2( 67, -36 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureButton" type="TextureButton" parent="Game_over_menu/Buttons/Restart"]
+modulate = Color( 0.0823529, 0.988235, 0.921569, 1 )
+margin_left = 63.0
+margin_top = 1080.0
+margin_right = 319.0
+margin_bottom = 1176.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Game_over_menu/Buttons/Restart"]
+margin_left = 101.0
+margin_top = 1082.0
+margin_right = 282.0
+margin_bottom = 1164.0
+custom_fonts/font = SubResource( 8 )
+text = "Restart"
+
+[node name="Menu" type="Node2D" parent="Game_over_menu/Buttons"]
+position = Vector2( 496, -36 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureButton" type="TextureButton" parent="Game_over_menu/Buttons/Menu"]
+modulate = Color( 0.0823529, 0.988235, 0.921569, 1 )
+margin_left = 63.0
+margin_top = 1080.0
+margin_right = 319.0
+margin_bottom = 1176.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Game_over_menu/Buttons/Menu"]
+margin_left = 120.0
+margin_top = 1082.0
+margin_right = 301.0
+margin_bottom = 1164.0
+custom_fonts/font = SubResource( 8 )
+text = "Menu"
+
+[node name="Next" type="Node2D" parent="Game_over_menu/Buttons"]
+position = Vector2( 283, 116 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureButton" type="TextureButton" parent="Game_over_menu/Buttons/Next"]
+modulate = Color( 0.0823529, 0.988235, 0.921569, 1 )
+margin_left = 63.0
+margin_top = 1080.0
+margin_right = 319.0
+margin_bottom = 1176.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Game_over_menu/Buttons/Next"]
+margin_left = 129.0
+margin_top = 1084.0
+margin_right = 243.0
+margin_bottom = 1166.0
+custom_fonts/font = SubResource( 8 )
+text = "Next"
+
+[node name="Stars_Bar" type="Sprite" parent="Game_over_menu"]
+position = Vector2( 449, 802 )
+scale = Vector2( 2.67578, 2.35417 )
+texture = ExtResource( 3 )
+
+[node name="Star1" type="Sprite" parent="Game_over_menu/Stars_Bar"]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( -66.8963, 1.80273 )
+scale = Vector2( 1.61168, 1.75869 )
+texture = ExtResource( 4 )
+
+[node name="Star2" type="Sprite" parent="Game_over_menu/Stars_Bar"]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 3.05176e-05, 1.80273 )
+scale = Vector2( 1.61168, 1.75869 )
+texture = ExtResource( 4 )
+
+[node name="Star3" type="Sprite" parent="Game_over_menu/Stars_Bar"]
+modulate = Color( 0.580392, 0.580392, 0.580392, 1 )
+position = Vector2( 66.8964, 1.6991 )
+scale = Vector2( 1.61168, 1.75869 )
+texture = ExtResource( 4 )
+
+[node name="Pause_area" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -337.0
+margin_top = -239.5
+margin_right = 337.0
+margin_bottom = 249.5
+
+[node name="Pause_button" type="TextureButton" parent="Pause_area"]
+margin_left = 1289.0
+margin_top = -276.5
+margin_right = 1689.0
+margin_bottom = 123.5
+rect_scale = Vector2( 0.25, 0.25 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Pause_area/Pause_button"]
+margin_left = 124.0
+margin_top = 4.0
+margin_right = 289.0
+margin_bottom = 396.0
+custom_fonts/font = SubResource( 9 )
+text = "P"
+align = 1
+valign = 1
+
+[node name="World_Level" type="Label" parent="Pause_area"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1084.0
+margin_top = -404.0
+margin_right = 1076.0
+margin_bottom = -137.0
+custom_fonts/font = SubResource( 11 )
+text = "World:10 / Level: 9"
+align = 1
+valign = 1
+
+[node name="Pause_menu" type="GridContainer" parent="Pause_area"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -344.0
+margin_top = -129.0
+margin_right = 200.0
+margin_bottom = 351.0
+rect_scale = Vector2( 1.25, 1.25 )
+custom_constants/vseparation = 32
+custom_constants/hseparation = 32
+columns = 2
+
+[node name="Resume" type="TextureButton" parent="Pause_area/Pause_menu"]
+margin_right = 256.0
+margin_bottom = 96.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Pause_area/Pause_menu/Resume"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -61.0
+margin_right = 142.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 10 )
+text = "Resume"
+align = 1
+valign = 1
+
+[node name="Restart" type="TextureButton" parent="Pause_area/Pause_menu"]
+margin_left = 288.0
+margin_right = 544.0
+margin_bottom = 96.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Pause_area/Pause_menu/Restart"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -61.0
+margin_right = 142.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 10 )
+text = "Restart"
+align = 1
+valign = 1
+
+[node name="Shop" type="TextureButton" parent="Pause_area/Pause_menu"]
+margin_top = 128.0
+margin_right = 256.0
+margin_bottom = 224.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Pause_area/Pause_menu/Shop"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -61.0
+margin_right = 142.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 10 )
+text = "Shop"
+align = 1
+valign = 1
+
+[node name="Menu" type="TextureButton" parent="Pause_area/Pause_menu"]
+margin_left = 288.0
+margin_top = 128.0
+margin_right = 544.0
+margin_bottom = 224.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Pause_area/Pause_menu/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -61.0
+margin_right = 142.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 10 )
+text = "Menu"
+align = 1
+valign = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.0705882 )
+position = Vector2( 0, 141 )
+shape = SubResource( 12 )
+
+[node name="New_character" type="Node2D" parent="."]
+
+[node name="new_character_Anim" type="AnimationPlayer" parent="New_character"]
+root_node = NodePath("../..")
+reset_on_save = false
+"anims/New Anim" = SubResource( 15 )
+anims/RESET = SubResource( 17 )
+
+[node name="Sprite" type="Sprite" parent="New_character"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 1080, 315 )
+texture = ExtResource( 10 )
+
+[node name="character_name" type="Label" parent="New_character"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 973.0
+margin_top = 589.0
+margin_right = 3122.0
+margin_bottom = 752.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = SubResource( 16 )
+text = "Character "
+align = 1
+valign = 1
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]
+[connection signal="animation_finished" from="New_character/new_character_Anim" to="." method="_on_new_character_Anim_animation_finished"]

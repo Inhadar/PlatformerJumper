@@ -1,0 +1,414 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Shop_Page/Shop_scrols.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Dosis-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Project_jump/Sb_normal.png" type="Texture" id=3]
+[ext_resource path="res://Project_jump/Button_pressed.png" type="Texture" id=4]
+[ext_resource path="res://Project_jump/Button_normal.png" type="Texture" id=5]
+[ext_resource path="res://Shop_Page/Shop.gd" type="Script" id=6]
+[ext_resource path="res://Project_jump/Players/Player1.png" type="Texture" id=7]
+[ext_resource path="res://Project_jump/Players/Player3.png" type="Texture" id=8]
+[ext_resource path="res://Project_jump/Players/Player2.png" type="Texture" id=9]
+[ext_resource path="res://Project_jump/Sb_pressed.png" type="Texture" id=10]
+[ext_resource path="res://Project_jump/chain.png" type="Texture" id=11]
+[ext_resource path="res://Project_jump/Players/Player4.png" type="Texture" id=12]
+[ext_resource path="res://Project_jump/Players/Player5.png" type="Texture" id=13]
+[ext_resource path="res://Project_jump/Players/Player6.png" type="Texture" id=14]
+[ext_resource path="res://Project_jump/Players/Player7.png" type="Texture" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="Shop_Page" type="Node"]
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.580392, 0.513726, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -57.0
+margin_right = 5.0
+margin_bottom = -57.0
+mouse_filter = 1
+scroll_vertical_enabled = false
+script = ExtResource( 1 )
+scroll_duration = 0.5
+
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer"]
+margin_right = 7360.0
+margin_bottom = 1068.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/CenterContainer"]
+margin_top = 334.0
+margin_right = 7360.0
+margin_bottom = 734.0
+mouse_filter = 1
+custom_constants/margin_right = 1080
+custom_constants/margin_left = 1080
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/CenterContainer/MarginContainer"]
+margin_left = 1080.0
+margin_right = 6280.0
+margin_bottom = 400.0
+custom_constants/separation = 400
+
+[node name="0" type="TextureButton" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer"]
+margin_right = 400.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/0"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = -161.8
+margin_right = 0.199951
+margin_bottom = -161.8
+custom_fonts/font = SubResource( 1 )
+text = "111111"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.06
+anchor_bottom = 0.85
+margin_left = -32.0
+margin_top = -84.0
+margin_right = -192.0
+margin_bottom = -184.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 7 )
+
+[node name="chain" type="Sprite" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/0"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+
+[node name="1" type="TextureButton" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 800.0
+margin_right = 1200.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/1"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = -161.8
+margin_right = 0.199951
+margin_bottom = -161.8
+custom_fonts/font = SubResource( 1 )
+text = "111111"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.06
+anchor_bottom = 0.85
+margin_left = -32.0
+margin_top = -84.0
+margin_right = -192.0
+margin_bottom = -184.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 9 )
+
+[node name="chain" type="Sprite" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/1"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+
+[node name="2" type="TextureButton" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 1600.0
+margin_right = 2000.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/2"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = -161.8
+margin_right = 0.199951
+margin_bottom = -161.8
+custom_fonts/font = SubResource( 1 )
+text = "111111"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.06
+anchor_bottom = 0.85
+margin_left = -32.0
+margin_top = -84.0
+margin_right = -192.0
+margin_bottom = -184.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 8 )
+
+[node name="chain" type="Sprite" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/2"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+
+[node name="3" type="TextureButton" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 2400.0
+margin_right = 2800.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/3"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = -161.8
+margin_right = 0.199951
+margin_bottom = -161.8
+custom_fonts/font = SubResource( 1 )
+text = "111111"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.06
+anchor_bottom = 0.85
+margin_left = -32.0
+margin_top = -84.0
+margin_right = -192.0
+margin_bottom = -184.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 12 )
+
+[node name="chain" type="Sprite" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/3"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+
+[node name="4" type="TextureButton" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer" groups=["with_money"]]
+margin_left = 3200.0
+margin_right = 3600.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Price" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/4"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = 10.2
+margin_right = 0.199951
+margin_bottom = 10.2
+custom_fonts/font = SubResource( 1 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/4"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = -161.8
+margin_right = 0.199951
+margin_bottom = -161.8
+custom_fonts/font = SubResource( 1 )
+text = "111111"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.06
+anchor_bottom = 0.85
+margin_left = -60.0
+margin_top = -94.0
+margin_right = -204.0
+margin_bottom = -171.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 13 )
+
+[node name="chain" type="Sprite" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/4"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+
+[node name="5" type="TextureButton" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer" groups=["with_money"]]
+margin_left = 4000.0
+margin_right = 4400.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Price" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/5"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = 3.20001
+margin_right = 0.199951
+margin_bottom = 3.20001
+custom_fonts/font = SubResource( 1 )
+text = "20"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/5"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = -161.8
+margin_right = 0.199951
+margin_bottom = -161.8
+custom_fonts/font = SubResource( 1 )
+text = "111111"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.06
+anchor_bottom = 0.85
+margin_left = -63.0
+margin_top = -110.0
+margin_right = -207.0
+margin_bottom = -187.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 14 )
+
+[node name="chain" type="Sprite" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/5"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+
+[node name="6" type="TextureButton" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer" groups=["with_money"]]
+margin_left = 4800.0
+margin_right = 5200.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/6"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = -161.8
+margin_right = 0.199951
+margin_bottom = -161.8
+custom_fonts/font = SubResource( 1 )
+text = "111111"
+align = 1
+valign = 1
+
+[node name="Price" type="Label" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/6"]
+anchor_left = -0.38
+anchor_top = 1.022
+anchor_right = 1.382
+anchor_bottom = 1.327
+margin_top = 10.2
+margin_right = 0.199951
+margin_bottom = 10.2
+custom_fonts/font = SubResource( 1 )
+text = "30"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.06
+anchor_bottom = 0.85
+margin_left = -62.0
+margin_top = -98.0
+margin_right = -206.0
+margin_bottom = -175.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 15 )
+
+[node name="chain" type="Sprite" parent="ScrollContainer/CenterContainer/MarginContainer/HBoxContainer/6"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+
+[node name="Back_button" type="TextureButton" parent="."]
+anchor_left = 0.056
+anchor_top = 0.081
+anchor_right = 0.175
+anchor_bottom = 0.199
+margin_left = 1729.04
+margin_top = -27.48
+margin_right = 1728.0
+margin_bottom = -58.92
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Back_button"]
+margin_left = 35.0
+margin_top = 1.511
+margin_right = 215.0
+margin_bottom = 83.511
+custom_fonts/font = SubResource( 2 )
+text = "Back"
+align = 1
+valign = 1
+
+[node name="Coin_label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -1075.0
+margin_right = 1079.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 2 )
+text = "Coin: 222222"
+align = 1
+valign = 1
+
+[connection signal="gui_input" from="ScrollContainer" to="ScrollContainer" method="_on_ScrollContainer_gui_input"]
+[connection signal="pressed" from="Back_button" to="." method="_on_TextureButton_pressed"]

@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Project_jump/level_button_normal.png" type="Texture" id=1]
+[ext_resource path="res://Level_sets/Level_set_1/Level.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Dosis-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI_Scenes/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Project_jump/Button_normal.png" type="Texture" id=5]
+[ext_resource path="res://Project_jump/Button_pressed.png" type="Texture" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Gate/Gate.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Collectables/Coin_set.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Collectables/Star.tscn" type="PackedScene" id=10]
+
+[sub_resource type="DynamicFont" id=5]
+size = 96
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "level_button_normal.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="Level_1" type="Node"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 433.0 ],
+"_editor_description_": ""
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0196078, 0.0745098, 0.129412, 1 )
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="Level" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -477.0
+margin_bottom = -355.0
+custom_fonts/font = SubResource( 5 )
+text = "Level_1"
+align = 1
+valign = 1
+
+[node name="Level2" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -396.0
+margin_top = -257.0
+margin_right = 396.0
+margin_bottom = -257.0
+custom_fonts/font = SubResource( 5 )
+text = "Movement Test Level"
+align = 1
+valign = 1
+
+[node name="Back" type="TextureButton" parent="."]
+margin_left = 60.0
+margin_top = 70.0
+margin_right = 316.0
+margin_bottom = 166.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Back"]
+margin_left = 62.0
+margin_right = 183.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 4 )
+text = "Back"
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Gate" parent="Areas" instance=ExtResource( 8 )]
+position = Vector2( 3073, 254 )
+
+[node name="Star_set" type="Node2D" parent="Areas"]
+
+[node name="Star1" parent="Areas/Star_set" instance=ExtResource( 10 )]
+position = Vector2( 286, 429 )
+
+[node name="Star2" parent="Areas/Star_set" instance=ExtResource( 10 )]
+position = Vector2( 1187, 920 )
+
+[node name="Star3" parent="Areas/Star_set" instance=ExtResource( 10 )]
+position = Vector2( 2174, 636 )
+
+[node name="Coin_set" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( 1299, 521 )
+
+[node name="Coin_set2" parent="Areas" instance=ExtResource( 9 )]
+position = Vector2( 629, 672 )
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 140, 960 )
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -1
+tile_set = SubResource( 2 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 8
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, 65535, 0, 0, 25, 0, 0, 131071, 0, 0, 65561, 0, 0, 196607, 0, 0, 131097, 0, 0, 262143, 0, 0, 196633, 0, 0, 327679, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 393215, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 458751, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 524287, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0 )
+
+[connection signal="body_entered" from="Areas/Gate" to="." method="_on_Gate_body_entered"]

@@ -1,0 +1,300 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Project_jump/Players/Player1.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Dosis-Medium.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Project_jump/Bckgrnd/bck_lyr_1.png" type="Texture" id=6]
+[ext_resource path="res://Project_jump/Bckgrnd/bck_lyr_2.png" type="Texture" id=7]
+[ext_resource path="res://Project_jump/Bckgrnd/bck_lyr_3.png" type="Texture" id=8]
+[ext_resource path="res://Project_jump/Bckgrnd/bck_lyr_4.png" type="Texture" id=9]
+[ext_resource path="res://Project_jump/Bckgrnd/bck_lyr_5.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 16.25 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 33, 17 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Fly"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.40484, 1.40484 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "dead_anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1.51572, 1.7411, 3.13833, 1.18921 ),
+"update": 0,
+"values": [ Vector2( 0, -7.5 ), Vector2( 0, -7.5 ), Vector2( 0, -128 ), Vector2( 0, -128 ), Vector2( 0, 256 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -7.5 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Sprite"]
+modulate = Color( 0, 0, 0, 0 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -2
+z_as_relative = false
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.25 )
+shape = SubResource( 1 )
+
+[node name="cast_zone" type="Node2D" parent="."]
+
+[node name="Right" type="RayCast2D" parent="cast_zone"]
+modulate = Color( 1, 0, 0, 1 )
+enabled = true
+cast_to = Vector2( 35, 0 )
+collision_mask = 8
+
+[node name="Left" type="RayCast2D" parent="cast_zone"]
+modulate = Color( 1, 0, 0, 1 )
+enabled = true
+cast_to = Vector2( -35, 0 )
+collision_mask = 8
+
+[node name="Up" type="RayCast2D" parent="cast_zone"]
+enabled = true
+cast_to = Vector2( 0, -40 )
+collision_mask = 8
+
+[node name="L_Down" type="RayCast2D" parent="cast_zone"]
+position = Vector2( -31.5, 2 )
+rotation = 3.14168
+enabled = true
+cast_to = Vector2( 0, -20 )
+collision_mask = 8
+
+[node name="C_Down" type="RayCast2D" parent="cast_zone"]
+position = Vector2( 0, 2 )
+rotation = 3.14168
+enabled = true
+cast_to = Vector2( 0, -20 )
+collision_mask = 8
+
+[node name="R_Down" type="RayCast2D" parent="cast_zone"]
+position = Vector2( 31.5, 2 )
+rotation = 3.14168
+enabled = true
+cast_to = Vector2( 0, -20 )
+collision_mask = 8
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -159.5
+margin_top = -76.0
+margin_right = 482.5
+margin_bottom = 6.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 3 )
+text = "aaaa"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Fly = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+anims/dead_anim = SubResource( 5 )
+
+[node name="Ghost_Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Boost_timer" type="Timer" parent="."]
+
+[node name="Relase_Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Background"]
+current = true
+zoom = Vector2( 1.1, 1.1 )
+limit_left = -128
+limit_bottom = 1080
+smoothing_enabled = true
+smoothing_speed = 3.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+visible = false
+offset = Vector2( 540, 1080 )
+scale = Vector2( 0.7, 0.7 )
+transform = Transform2D( 0.7, 0, 0, 0.7, 540, 1080 )
+
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxBackground"]
+margin_left = -1978.57
+margin_top = -2577.14
+margin_right = 7738.43
+margin_bottom = 846.857
+color = Color( 0.952941, 0.545098, 0.545098, 1 )
+
+[node name="5" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+modulate = Color( 0.992157, 0.647059, 0.647059, 1 )
+position = Vector2( 0, -55 )
+motion_scale = Vector2( 0.05, 0.05 )
+motion_offset = Vector2( 0, -1100 )
+motion_mirroring = Vector2( 2160, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/5"]
+position = Vector2( -409, -215 )
+texture = ExtResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/5"]
+position = Vector2( 3910, -215 )
+texture = ExtResource( 10 )
+
+[node name="4" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+modulate = Color( 0.992157, 0.807843, 0.807843, 1 )
+position = Vector2( 0, -108 )
+motion_scale = Vector2( 0.15, 0.15 )
+motion_offset = Vector2( 0, -800 )
+motion_mirroring = Vector2( 2160, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/4"]
+position = Vector2( -409, -114 )
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/4"]
+position = Vector2( 3911, -114 )
+texture = ExtResource( 9 )
+
+[node name="3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+modulate = Color( 0.309804, 0.0980392, 0.462745, 1 )
+position = Vector2( 0, -108 )
+motion_scale = Vector2( 0.3, 0.3 )
+motion_offset = Vector2( 0, -950 )
+motion_mirroring = Vector2( 2160, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/3"]
+position = Vector2( -409, 105 )
+texture = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/3"]
+position = Vector2( 3911, 105.429 )
+texture = ExtResource( 8 )
+
+[node name="2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+modulate = Color( 0.20185, 0.0661011, 0.296875, 1 )
+motion_scale = Vector2( 0.4, 0.4 )
+motion_offset = Vector2( 0, -600 )
+motion_mirroring = Vector2( 2160, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/2"]
+position = Vector2( -409, 105 )
+texture = ExtResource( 7 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/2"]
+position = Vector2( 3911, 105 )
+texture = ExtResource( 7 )
+
+[node name="1" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+modulate = Color( 0.0980392, 0, 0.172549, 1 )
+motion_scale = Vector2( 0.45, 0.45 )
+motion_offset = Vector2( 0, -300 )
+motion_mirroring = Vector2( 2160, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/1"]
+position = Vector2( -409, 105 )
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/1"]
+position = Vector2( 3911, 105 )
+texture = ExtResource( 6 )
+
+[node name="1_2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+modulate = Color( 0.054902, 0.00392157, 0.0901961, 1 )
+motion_scale = Vector2( 0.55, 0.55 )
+motion_offset = Vector2( 0, -150 )
+motion_mirroring = Vector2( 2160, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/1_2"]
+position = Vector2( -409, 105 )
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="Background/ParallaxBackground/1_2"]
+position = Vector2( 3911.43, 105.714 )
+texture = ExtResource( 6 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
+[connection signal="timeout" from="Relase_Timer" to="." method="_on_Relase_Timer_timeout"]
